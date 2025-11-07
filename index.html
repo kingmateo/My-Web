@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>در حال بروزرسانی | موشا</title>
+    <link rel="icon" type="image/x-icon" href="./img/LOGO.ICO">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @font-face {
+            font-family: 'Vazir';
+            src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/Vazir-Bold.woff2') format('woff2');
+            font-weight: bold;
+            font-style: normal;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Vazir', sans-serif;
+        }
+        
+        :root {
+            --primary-dark: #0a0b16;
+            --accent-gold: #d4af37;
+            --gold-light: #f4e4a9;
+            --dark-gray: #1a1a1a;
+            --light-bg: #0c0d17;
+            --card-bg: #15182c;
+            --text-light: #f0f0f0;
+        }
+        
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow: hidden;
+            height: 100vh;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(212, 175, 55, 0.03) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.03) 0%, transparent 20%);
+        }
+        
+        .maintenance-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .page-bg {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(28, 43, 54, 0.25) 0%, transparent 50%),
+                linear-gradient(to bottom, rgba(10, 11, 22, 0.9), rgba(12, 13, 23, 0.95));
+            z-index: -2;
+        }
+        
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            right: 0;
+            z-index: -1;
+        }
+        
+        .floating-element {
+            position: absolute;
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: 50%;
+            animation: float 20s infinite ease-in-out;
+            filter: blur(1px);
+        }
+        
+        .floating-element:nth-child(1) {
+            width: 120px;
+            height: 120px;
+            top: 15%;
+            right: 8%;
+            animation-delay: 0s;
+        }
+        
+        .floating-element:nth-child(2) {
+            width: 180px;
+            height: 180px;
+            top: 55%;
+            right: 75%;
+            animation-delay: -3s;
+        }
+        
+        .floating-element:nth-child(3) {
+            width: 90px;
+            height: 90px;
+            top: 75%;
+            right: 25%;
+            animation-delay: -6s;
+        }
+        
+        .floating-element:nth-child(4) {
+            width: 150px;
+            height: 150px;
+            top: 30%;
+            right: 60%;
+            animation-delay: -9s;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg) scale(1);
+                opacity: 0.7;
+            }
+            25% {
+                transform: translate(40px, -60px) rotate(90deg) scale(1.1);
+                opacity: 0.9;
+            }
+            50% {
+                transform: translate(-30px, 40px) rotate(180deg) scale(0.9);
+                opacity: 0.6;
+            }
+            75% {
+                transform: translate(20px, 70px) rotate(270deg) scale(1.05);
+                opacity: 0.8;
+            }
+        }
+        
+        .logo-container {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: fadeInDown 1s ease-out;
+        }
+        
+        .logo-img {
+            width: 300px;
+            height: 80px;
+            background: url('./img/logo2.png') no-repeat center center;
+            background-size: contain;
+            display: inline-block;
+            filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.3));
+            animation: logoGlow 3s ease-in-out infinite;
+            transition: all 0.3s ease;
+        }
+        
+        .logo-img:hover {
+            filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.6));
+            transform: scale(1.05);
+        }
+        
+        @keyframes logoGlow {
+            0%, 100% {
+                filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.3));
+            }
+            50% {
+                filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.8)) drop-shadow(0 0 40px rgba(212, 175, 55, 0.4));
+            }
+        }
+        
+        .maintenance-content {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: fadeIn 1.2s ease-out 0.3s both;
+            max-width: 600px;
+        }
+        
+        .maintenance-icon {
+            font-size: 5rem;
+            color: var(--accent-gold);
+            margin-bottom: 30px;
+            animation: bounce 2s infinite;
+        }
+        
+        .maintenance-content h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, var(--accent-gold), var(--gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 5px 25px rgba(212, 175, 55, 0.4);
+        }
+        
+        .maintenance-content p {
+            font-size: 1.3rem;
+            color: #d0d0d0;
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+        
+        .fun-text {
+            font-size: 1.1rem;
+            color: var(--gold-light);
+            font-style: italic;
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 10px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            animation: pulseText 2s infinite;
+        }
+        
+        @keyframes pulseText {
+            0%, 100% {
+                opacity: 0.8;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+        
+        .progress-container {
+            width: 100%;
+            max-width: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            height: 12px;
+            margin: 30px auto;
+            overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-gold), #e6c158);
+            border-radius: 10px;
+            width: 0%;
+            animation: progress 3s ease-in-out infinite;
+            position: relative;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+        }
+        
+        .progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shine 2s infinite;
+        }
+        
+        @keyframes progress {
+            0% { width: 0%; }
+            50% { width: 70%; }
+            100% { width: 100%; }
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+            max-width: 400px;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+        
+        .maintenance-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            background: linear-gradient(145deg, rgba(21, 24, 44, 0.7), rgba(10, 11, 22, 0.9));
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            border-radius: 16px;
+            padding: 20px 30px;
+            color: var(--text-light);
+            font-size: 1.3rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.4s;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+        }
+        
+        .maintenance-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        
+        .maintenance-btn:hover::before {
+            opacity: 1;
+        }
+        
+        .maintenance-btn:hover {
+            transform: translateY(-8px);
+            border-color: rgba(212, 175, 55, 0.5);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3), 0 0 20px rgba(212, 175, 55, 0.2);
+        }
+        
+        .btn-disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        
+        .btn-disabled:hover {
+            transform: none;
+            border-color: rgba(212, 175, 55, 0.2);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-icon {
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+            color: var(--accent-gold);
+        }
+        
+        .maintenance-btn:hover .btn-icon {
+            transform: scale(1.2);
+        }
+        
+        .footer {
+            margin-top: 50px;
+            text-align: center;
+            animation: fadeIn 1s ease-out 0.8s both;
+            color: #b0b0b0;
+            font-size: 0.9rem;
+            padding: 20px;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+        
+        .footer p {
+            margin: 5px 0;
+        }
+        
+        .developer-info {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(212, 175, 55, 0.05);
+            border-radius: 10px;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+        
+        .developer-name {
+            color: var(--gold-light);
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+        
+        .telegram-link {
+            color: var(--accent-gold);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .telegram-link:hover {
+            color: var(--gold-light);
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .maintenance-btn .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(212, 175, 55, 0.3);
+            transform: scale(0);
+            animation: ripple 0.6s linear;
+            pointer-events: none;
+        }
+        
+        @keyframes ripple {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo-img {
+                width: 250px;
+                height: 65px;
+            }
+            
+            .maintenance-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .maintenance-content p {
+                font-size: 1.1rem;
+            }
+            
+            .maintenance-icon {
+                font-size: 4rem;
+            }
+            
+            .action-buttons {
+                max-width: 320px;
+            }
+            
+            .maintenance-btn {
+                padding: 18px 25px;
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo-img {
+                width: 200px;
+                height: 55px;
+            }
+            
+            .maintenance-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .maintenance-content p {
+                font-size: 1rem;
+            }
+            
+            .maintenance-icon {
+                font-size: 3.5rem;
+            }
+            
+            .action-buttons {
+                max-width: 280px;
+                gap: 15px;
+            }
+            
+            .maintenance-btn {
+                padding: 16px 22px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="maintenance-page">
+        <div class="page-bg"></div>
+        <div class="floating-elements">
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+        </div>
+        
+        <div class="logo-container">
+            <div class="logo-img"></div>
+        </div>
+        
+        <div class="maintenance-content">
+            <div class="maintenance-icon">
+                <i class="fas fa-tools"></i>
+            </div>
+            <h1>در حال بروزرسانی جادویی! ✨</h1>
+            <p>موشا داره یه لباس جدید میپوشه و آماده یه ظاهر فوق العاده میشه! 🎩</p>
+            
+            <div class="fun-text">
+                🚀 در حال پرواز به سمت نسخه جدید... <br>
+                ⚡ رندرهای سه بعدی در حال تکمیل شدن <br>
+                🎬 جلوه های ویژه در حال بارگذاری <br>
+                💫 به زودی با قدرت برمیگردیم!
+            </div>
+            
+            <div class="progress-container">
+                <div class="progress-bar"></div>
+            </div>
+            
+            <p>لطفاً یه چای داغ بریز و چند دقیقه صبر کن! ☕</p>
+        </div>
+        
+        <div class="action-buttons">
+            <div class="maintenance-btn btn-disabled" id="support-btn">
+                <i class="btn-icon fas fa-heart"></i>
+                <span>حمایت از ما</span>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>با تشکر از صبر و شکیبایی فوق العاده شما! 🙏</p>
+            <p>استدیو موشا - جایی که رویاها واقعی میشن</p>
+            
+            <div class="developer-info">
+                <div class="developer-name">طراحی و توسعه توسط: امیر حسین یاری</div>
+                <a href="https://t.me/AHYVFX" target="_blank" class="telegram-link">
+                    <i class="fab fa-telegram"></i>
+                    @AHYVFX
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const supportBtn = document.getElementById('support-btn');
+            
+            // افزودن افکت ripple به دکمه (با وجود غیرفعال بودن)
+            function createRipple(event) {
+                if (event.currentTarget.classList.contains('btn-disabled')) {
+                    return; // از اجرای افکت برای دکمه غیرفعال جلوگیری می‌کند
+                }
+                
+                const button = event.currentTarget;
+                const circle = document.createElement('span');
+                const diameter = Math.max(button.clientWidth, button.clientHeight);
+                const radius = diameter / 2;
+                
+                circle.style.width = circle.style.height = `${diameter}px`;
+                circle.style.left = `${event.clientX - button.getBoundingClientRect().left - radius}px`;
+                circle.style.top = `${event.clientY - button.getBoundingClientRect().top - radius}px`;
+                circle.classList.add('ripple');
+                
+                const ripple = button.getElementsByClassName('ripple')[0];
+                if (ripple) {
+                    ripple.remove();
+                }
+                
+                button.appendChild(circle);
+            }
+            
+            supportBtn.addEventListener('click', createRipple);
+            
+            // شبیه‌سازی پیشرفت بروزرسانی
+            let progress = 0;
+            const progressBar = document.querySelector('.progress-bar');
+            const progressInterval = setInterval(() => {
+                progress += Math.random() * 5;
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(progressInterval);
+                }
+                progressBar.style.width = progress + '%';
+            }, 1000);
+            
+            // پیام‌های بامزه متغیر
+            const funMessages = [
+                "🎨 در حال رنگ آمیزی دنیای جدید...",
+                "🚀 پرتاب به مدار خلاقیت...",
+                "⚡ شارژ کردن باتری های خلاقیت...",
+                "🎭 آماده کردن صحنه برای نمایش جدید...",
+                "🌟 پخش کردن ستاره ها در آسمان سایت..."
+            ];
+            
+            const funTextElement = document.querySelector('.fun-text');
+            let messageIndex = 0;
+            
+            setInterval(() => {
+                messageIndex = (messageIndex + 1) % funMessages.length;
+                funTextElement.innerHTML = funMessages[messageIndex];
+            }, 4000);
+        });
+    </script>
+</body>
+</html>
